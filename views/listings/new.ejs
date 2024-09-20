@@ -1,0 +1,78 @@
+<% layout("/layouts/boilerplate.ejs")-%>
+<body class="container-fluid">
+    <h2 class="create">Create new listing...</h2>
+    <form method="POST" action="/listings" class="createForm needs-validation" enctype="multipart/form-data" novalidate>
+
+        <div class="col-md-12">
+          <label for="input" class="form-label">Title:</label>
+          <input type="text" class="form-control" id="input" name="listing[title]" placeholder="Enter title" required>
+          <div class="valid-feedback">
+            Destiny name must be Looks good!
+          </div>
+        </div><br>
+
+        <div class="col-md-12">
+          <label for="inputp" class="form-label">Description:</label>
+          <textarea rows="3" type="text" class="form-control" id="inputp" name="listing[description]" placeholder="Description" required></textarea>
+          <div class="invalid-feedback">
+            Please give the brief description about your destiny!
+          </div>
+        </div><br>
+
+        <div class="col-12">
+          <label for="inputi" class="form-label">Upload Image:</label>
+          <input type="file" class="form-control" id="inputi" name="listing[image]" placeholder="Image path" required>
+        </div><br>
+
+        <div class="row">
+          <div class="col-6">
+              <label for="inputA" class="form-label">Price: </label>
+              <input  class="form-control" id="inputA" name="listing[price]" placeholder="Price" required>
+          </div>
+          <!-- <div class="col-6">
+            <label for="category class="form-label">Category: </label>
+            <select class="form-select mt-1" id="category" name="listing[category]">
+              <option selected value="">Open this select menu</option>
+              <option value="Trendings">Trendings</option>
+              <option value="New">New</option>
+              <option value="Rooms">Rooms</option>
+              <option value="Popular">Populars</option>
+              <option value="Farms">Farms</option>
+              <option value="Awesome">Awesome</option>
+              <option value="BeachFront">BeachFront</option>
+              <option value="Island">Island</option>
+              <option value="Play">Play</option>
+              <option value="Pools">Pools</option>
+              <option value="TreeHouse">Treehouse</option>
+              <option value="Castle">Castle</option>
+              <option value="HistoricPlace">Historic Place</option>
+              <option value="Lake">Lake</option>
+              <option value="Container">Container</option>
+              <option value="Wilds">Wilds</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+        </div><br> -->
+
+        <div class="row">
+          <div class="col-md-6">
+            <label for="address" class="form-label">City:</label>
+            <input type="text" class="form-control" id="address" name="listing[location]" placeholder="City, Location" required>
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+        <div class="col-md-6">
+          <label for="inputState" class="form-label">Country:</label>
+          <input type="text" class="form-control" id="inputState" name="listing[country]" placeholder="country" required>
+          <div class="invalid-feedback">
+            Please provide a valid country.
+          </div>
+        </div>
+        </div><br>
+          
+        <div class="col-12">
+          <button class="btn btn-primary btn1">Add</button>
+        </div><br>
+      </form>
+</body>      

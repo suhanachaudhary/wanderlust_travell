@@ -1,0 +1,79 @@
+<% layout("layouts/boilerplate") %>
+<body>
+    <h2 class="create">Edit the Listings...</h2>
+    <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" class="createForm needs-validation" novalidate enctype="multipart/form-data">
+
+        <div class="col-md-12">
+          <label for="input" class="form-label">Title:</label>
+          <input type="text" class="form-control" id="input" name="listing[title]" value="<%=listing.title%>" required>
+          <div class="valid-feedback">
+            Destiny name must be Looks good!
+          </div>
+        </div><br>
+
+        <div class="col-md-12">
+          <label for="inputp" class="form-label">Description:</label>
+          <input type="text" class="form-control" id="inputp" name="listing[description]" value="<%=listing.description%>" required>
+          <div class="invalid-feedback">
+            Please give the brief description about your destiny!
+          </div>
+        </div><br>
+
+        <p>Original Image:</p>
+        <div>
+          <img src="<%=originalUrl%>" style="height: 150px;width: 240px;"/>
+        </div><br>
+
+        <div class="col-12">
+          <label for="inputi" class="form-label">Upload new image:</label>
+          <input type="file" class="form-control" id="inputi" name="listing[image]">
+        </div><br>
+
+        <div class="row">
+          <div class="col-6">
+              <label for="inputA" class="form-label">Price: </label>
+              <input class="form-control" id="inputA" name="listing[price]" value="<%=listing.price%>" required>
+          </div>
+          <div class="col-6">
+            <label for="category class="form-label">Category: </label>
+            <select class="form-select mt-1" id="category">
+              <option selected value="<%=listing.category%>" name="listing[category]"><%=listing.category%></option>
+              <option>Trending</option>
+              <option>New</option>
+              <option>Rooms</option>
+              <option>Populars</option>
+              <option>Farms</option>
+              <option>Awesome</option>
+              <option>BeachFront</option>
+              <option>Iseland</option>
+              <option>Play</option>
+              <option>Pools</option>
+              <option>Treehouse</option>
+              <option>Castle</option>
+              <option>Historic Place</option>
+              <option>Lake</option>
+              <option>Container</option>
+              <option>Wild</option>
+              <option>Others</option>
+            </select>
+          </div>
+        </div><br>
+
+        <div class="row">
+          <div class="col-6">
+            <label for="inputCity" class="form-label">City:</label>
+            <input type="text" class="form-control" id="inputCity" name="listing[location]"  value="<%=listing.location%>" required>
+          </div>
+          <div class="col-6">
+          <label for="inputState" class="form-label">Country:</label>
+          <input type="text" class="form-control" id="inputState" name="listing[country]"  value="<%=listing.country%>" required>
+          </div>
+        </div><br>
+          
+        <div class="col-12">
+          <button class="btn btn-primary btn1">Edit</button>
+        </div><br><br>
+
+      </form>
+
+</body>

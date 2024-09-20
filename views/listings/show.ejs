@@ -1,0 +1,120 @@
+<% layout("/layouts/boilerplate.ejs")-%>
+<body>
+    <div class="col-6">
+      <h3 class="show-title"><%= listing.title%>.</h3>
+    </div>
+    <div class="show-card">
+        <div class="card-body">
+          <img
+            src="<%=listing.image.url%>"
+            alt="listing image"
+            class="card-img-top show-img"
+          />
+        </div>  
+        <div class="show-card-content">
+          <div class="card-body" style="margin-top: 5px;">
+              <p class="card-text"><b>Owned By</b>: <i><%= listing.owner.username%></i></p>
+              <p class="card-text"><%= listing.description%></p>
+              <p class="card-text">&#8377; <%= listing.price.toLocaleString("en-IN")%> /night</p>
+              <p class="card-text">Category: <%= listing.category %></p>
+              <p class="card-text">Location: <%= listing.location%> </p>
+              <p class="card-text country">Country: <%= listing.country%></p>  
+          </div>
+          <% if(currUser && listing.owner._id.equals(currUser._id)){%>
+            <div class="btns">
+              <form method="get" action="/listings/<%=listing._id%>/edit">
+                <button class="btn btn-primary btn1">Edit</button>
+              </form>
+              &nbsp;&nbsp;&nbsp;
+              <form method="post" action="/listings/<%=listing._id%>?_method=DELETE">
+                <button class="btn btn-primary btn1">Delete</button>
+              </form>
+            </div>
+          <%}%>
+        </div>
+    </div>  
+  <br>
+<!-- review section -->
+    <div class="col-12">
+      <% if(currUser){%>
+      <h4>Leave a Reviews....</h4>
+      <form
+        action="/listings/<%=listing._id%>/reviews"
+        class="needs-validation"
+        novalidate
+        method="post">
+        <div>
+          <label for="inputA" class="form-label">Ratings: </label>
+          <fieldset class="starability-slot">
+            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+        </div>
+        <label for="inputp" class="form-label">Comments:</label>
+        <textarea
+          rows="3"
+          type="text"
+          name="review[comment]"
+          class="form-control"
+          id="inputp"
+          placeholder="Leave comments."
+          required
+        ></textarea>
+        <div class="invalid-feedback">Comment is necessary!</div>
+      
+      <div class="btns mb-4 mt-2">
+        <button class="btn btn-primary btn1">Submit</button>
+      </div>
+    </form>
+  <%}%>
+    <% if(listing.reviews.length>0){%>
+      <h4 class="mb-3">All reviews....</h4>
+      <div class="row review">
+        <% for(let review of listing.reviews){%>
+        <div class="card mb-3 ms-3 review-card">
+
+          <div class="card-body">
+            <h5 class="card-title">@<%= review.author.username%></h5>
+            <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
+            <p class="card-text"><%=review.comment%></p>
+            <form method="post" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
+              <button class="btn btn-sm btn-dark mb-2">Delete</button>
+            </form>
+          </div>
+
+        </div>
+        <%}%>
+        <hr>
+      </div>
+    <%}%>
+
+    <!-- google map -->
+    <div class="col-10 mb-3">
+      <h4>Where you'll be</h4>
+      <gmp-map center="28.644800, 77.216721" zoom="10" map-id="DEMO_MAP_ID" style="height: 400px">
+        <gmp-advanced-marker
+            position="28.644800, 77.216721"
+            title="Mountain View, CA">
+        </gmp-advanced-marker>
+
+        <gmp-advanced-marker
+            position="47.648994,-122.3503845"
+            title="Seattle, WA">
+        </gmp-advanced-marker>
+      </gmp-map>
+    </div>  
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzKK6hHeLtWkC_ijGzKKAYJkGtM7vNtSg&libraries=maps,marker&v=beta" defer>
+    </script>
+
+    <script src="/public/js/map.js"></script>
+</body>
