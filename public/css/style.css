@@ -83,6 +83,30 @@ body{
     background-color: #fff;
 }
 @media (max-width: 768px) {
+    footer{
+        text-align: center;
+    }
+
+    .slider-wrapper .image-list img{
+        width: 200px !important;
+      }
+    .filter{
+        display: block;
+    }
+    .tax-toggle{
+        margin-right: 20px !important;
+    }
+    .form-switch{
+        position: relative;
+        
+    }
+    .social{
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
     .navbar{
         margin-bottom: 200px;
     }
@@ -155,11 +179,17 @@ label{
     font-weight: 600;
 }
 
-/* footer styling */
+.switch{
+    background-color: #fe424d !important;
+}
 
+/* footer styling */
 
 footer{
     background-color: #faf8f8;
+}
+.social{
+    margin-bottom: 10px;
 }
 .f-info-links a{
     text-decoration: none;
@@ -309,7 +339,8 @@ footer{
  }
 
 .signupCARD{
-    height: 420px;
+    height: 450px;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -317,12 +348,16 @@ footer{
     border-radius: 16px;
     box-shadow: 2px 4px 5px 3px #674188;
 } 
+.signupHead{
+    text-align: center;
+}
 
 /* map styling */
 #map{
     height: 400px;
 }
 
+/* top icon */
 .filters{
     display: flex;
     align-items: center;
